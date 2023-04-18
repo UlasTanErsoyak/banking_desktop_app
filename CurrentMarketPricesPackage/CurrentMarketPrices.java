@@ -22,7 +22,7 @@ public class CurrentMarketPrices {
             url+=currencies[i];
             try {
                 final Document document = Jsoup.connect(url).get();
-                Elements a = document.getElementsByClass("value up");
+                Elements a = document.getElementsByClass("kurBox");
                 for(Element x : a){
                     values.add(x.text());
                 }
@@ -42,15 +42,35 @@ public class CurrentMarketPrices {
         catch (IOException e) {
             System.out.println(e);
         }
-        float dollarToLira = Float.parseFloat(values.get(0).toString().replace(',','.'));
-        float liraToDollar = Float.parseFloat(values.get(1).toString().replace(',','.'));
 
-        float euroToLira = Float.parseFloat(values.get(2).toString().replace(',','.'));
-        float liraToEuro = Float.parseFloat(values.get(3).toString().replace(',','.'));
+        String DolarLira = values.get(1).toString();
+        DolarLira = DolarLira.replaceAll(",", ".").replaceAll("[^\\d.]", "");
+
+        String LiraDollar = values.get(2).toString();
+        LiraDollar = LiraDollar.replaceAll(",", ".").replaceAll("[^\\d.]", "");
 
 
-        float goldToLira = Float.parseFloat(values.get(5).toString().replace(".","").replace(",","."));
-        float liraToGold = Float.parseFloat(values.get(6).toString().replace(".","").replace(",","."));
+        String EuroLira = values.get(5).toString();
+        EuroLira = EuroLira.replaceAll(",", ".").replaceAll("[^\\d.]", "");
+
+        String LiraEuro = values.get(6).toString();
+        LiraEuro = LiraEuro.replaceAll(",", ".").replaceAll("[^\\d.]", "");
+
+
+
+        float dollarToLira = Float.parseFloat(DolarLira);
+        float liraToDollar = Float.parseFloat(LiraDollar);
+
+        float euroToLira = Float.parseFloat(EuroLira);
+        float liraToEuro = Float.parseFloat(LiraEuro);
+        String GoldLira = values.get(9).toString();
+        GoldLira = GoldLira.replaceAll(",", "/").replaceAll("\\.","").replaceAll("/",".");
+
+        String LiraGold = values.get(10).toString();
+        LiraGold = LiraGold.replaceAll(",", "/").replaceAll("\\.","").replaceAll("/",".");
+
+        float goldToLira = Float.parseFloat(GoldLira);
+        float liraToGold = Float.parseFloat(LiraGold);
 
         LocalDate myObj = LocalDate.now();
 
