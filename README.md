@@ -11,6 +11,3 @@ The application also has some basic security features.
 For example, users are required to enter their password to log in to the application,and the application encrypts account data when it is written to the file.
 
 One potential improvement for the application would be to add more robust security features, such as two-factor authentication or biometric authentication.
-
-Overall, the banking desktop application is a well-designed program that provides users with a simple and intuitive way to manage their bank accounts. 
-With some additional security features, it could be an even more useful tool for users to manage their finances.
