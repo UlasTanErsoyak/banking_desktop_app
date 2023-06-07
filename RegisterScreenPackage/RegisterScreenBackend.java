@@ -170,7 +170,7 @@ public class RegisterScreenBackend {
 
         String initializeQuery = "INSERT INTO user_balance_table" +
                 " (ID,lira,dollar,euro,gold)" +
-                " VALUES (?,?,?,?,?,?)";
+                " VALUES (?,?,?,?,?)";
         ArrayList<Object> initializeparameters = new ArrayList<>();
         initializeparameters.add(ID);
         initializeparameters.add(0);
@@ -179,12 +179,12 @@ public class RegisterScreenBackend {
         initializeparameters.add(0);
         DatabaseOperationsClass.updateDeleteInsert(initializeQuery,initializeparameters);
 
-        String loanAccountQuerry ="INSERT INTO loan_table (ID,lira,dollar,euro) VALUES (?,?,?,?,?)";
+        String loanAccountQuerry ="INSERT INTO loan_table (ID,lira,dollar,euro) VALUES (?,?,?,?)";
         ArrayList<Object> initializeparameters1 = new ArrayList<>();
-        initializeparameters.add(ID);
-        initializeparameters.add(0);
-        initializeparameters.add(0);
-        initializeparameters.add(0);
+        initializeparameters1.add(ID);
+        initializeparameters1.add(0);
+        initializeparameters1.add(0);
+        initializeparameters1.add(0);
         DatabaseOperationsClass.updateDeleteInsert(loanAccountQuerry,initializeparameters1);
 
     }

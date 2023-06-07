@@ -402,8 +402,7 @@ public class BalanceScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(BalanceScreenBackend.canTakeALoan(Float.parseFloat(loanSpinnner.getValue().toString()),BalanceScreenBackend.getID(),loanCombobox.getSelectedItem().toString())){
-                    float debt = BalanceScreenBackend.getUserLoan(BalanceScreenBackend.getID(),loanCombobox.getSelectedItem().toString().toLowerCase());
-                    JOptionPane.showMessageDialog(null,"Successfully took a loan worth of "+debt+" "+loanCombobox.getSelectedItem().toString().toLowerCase() );
+                    JOptionPane.showMessageDialog(null,"Successfully took a loan worth of "+loanSpinnner.getValue()+" "+loanCombobox.getSelectedItem().toString().toLowerCase() );
                     BalanceScreenBackend.takeLoanorPay(Float.parseFloat(loanSpinnner.getValue().toString()),BalanceScreenBackend.getID(),loanCombobox.getSelectedItem().toString(),"loan");
                     BalanceScreenBackend.getUsersDataToScreen(BalanceScreenBackend.getID(),user_lira,user_dollar,user_euro,user_gold);
                 }

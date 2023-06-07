@@ -88,7 +88,7 @@ public class RegisterScreen {
                     UserProfileScreen.getUsersDataToScreen(x);
                     HelperMethods.changeScreens(registerScreen,UserProfileScreen.userProfileScreen);
                 }
-            }
+           }
         });
 
         //button and label for those user that already has an account

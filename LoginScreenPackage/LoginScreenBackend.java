@@ -83,13 +83,18 @@ public class LoginScreenBackend {
         String query = "SELECT * FROM remember_me_table;";
         ArrayList<Object> IDparameters = new ArrayList<>();
         ArrayList<Object> array = DatabaseOperationsClass.getData(query,IDparameters);
-        int ID = Integer.parseInt(array.get(0).toString());
-        int is_checked = Integer.parseInt(array.get(1).toString());
-        String user_input = array.get(2).toString();
+        try {
+            int ID = Integer.parseInt(array.get(0).toString());
+            int is_checked = Integer.parseInt(array.get(1).toString());
+            String user_input = array.get(2).toString();
 
-        if(is_checked==1){
-            return user_input;
+            if (is_checked == 1) {
+                return user_input;
+            }
+            return null;
         }
-        return null;
+        catch (Exception e) {
+            return null;
+        }
+        }
     }
-}
