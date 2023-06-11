@@ -13,6 +13,14 @@ import java.awt.event.ActionListener;
 
 public class UserProfileScreen {
     public static final JFrame userProfileScreen = new JFrame("Profile Screen");
+    public static JLabel user_name = new JLabel("");
+    public static JLabel user_surname = new JLabel("");
+    public static JLabel user_phone_number = new JLabel("");
+    public static JLabel user_email_address = new JLabel("");
+    public static JLabel IBAN = new JLabel("");
+
+
+    private static UserObject currentUser;
     public static boolean isExecuted = false;
     public static int ID;
     public UserProfileScreen(){
@@ -47,6 +55,7 @@ public class UserProfileScreen {
         logoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                currentUser = null;
                 HelperMethods.changeScreens(userProfileScreen, LoginScreen.loginScreen);
             }
         });
@@ -58,40 +67,42 @@ public class UserProfileScreen {
     }
 
     /**
-     *  takes user object and shows objects name surname phonenumber and email parameters to the user
+     *  takes user object and shows objects name surname phone number and email parameters to the user
      * @param user UserObject type variable
      */
     public static void getUsersDataToScreen(UserObject user){
-        JLabel user_name = new JLabel(user.getName());
+        currentUser = user;
+        user_name.setText(currentUser.getName());
         user_name.setBounds(110,10,300,30);
 
-        JLabel user_surname = new JLabel(user.getSurname());
+        user_surname.setText(currentUser.getSurname());
         user_surname.setBounds(110,40,300,30);
 
 
-        JLabel user_phone_number = new JLabel(user.getPhone_number());
+        user_phone_number.setText(currentUser.getPhone_number());
         user_phone_number.setBounds(110,70,300,30);
 
-        JLabel user_email_address = new JLabel(user.getEmail());
+
+        user_email_address.setText(currentUser.getEmail());
         user_email_address.setBounds(110,100,300,30);
 
-        JLabel IBAN = new JLabel(user.getIBAN());
+        IBAN.setText(currentUser.getIBAN());
         IBAN.setBounds(110,130,300,30);
 
 
-        JTextField user_name_edit = new JTextField(user.getName());
+        JTextField user_name_edit = new JTextField(currentUser.getName());
         user_name_edit.setBounds(110,10,300,30);
         user_name_edit.setVisible(false);
 
-        JTextField user_surname_edit = new JTextField(user.getSurname());
+        JTextField user_surname_edit = new JTextField(currentUser.getSurname());
         user_surname_edit.setBounds(110,40,300,30);
         user_surname_edit.setVisible(false);
 
-        JTextField user_phone_number_edit = new JTextField(user.getPhone_number());
+        JTextField user_phone_number_edit = new JTextField(currentUser.getPhone_number());
         user_phone_number_edit.setBounds(110,70,300,30);
         user_phone_number_edit.setVisible(false);
 
-        JTextField user_email_address_edit = new JTextField(user.getEmail());
+        JTextField user_email_address_edit = new JTextField(currentUser.getEmail());
         user_email_address_edit.setBounds(110,100,300,30);
         user_email_address_edit.setVisible(false);
 
@@ -105,7 +116,7 @@ public class UserProfileScreen {
         toBalanceButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int id = user.getID();
+                int id = currentUser.getID();
                 BalanceScreenBackend.getUsersDataToScreen(id,BalanceScreen.user_lira,BalanceScreen.user_dollar,BalanceScreen.user_euro,BalanceScreen.user_gold);
                 HelperMethods.changeScreens(userProfileScreen,BalanceScreen.userBalanceScreen);
             }

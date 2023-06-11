@@ -445,7 +445,7 @@ public class BalanceScreen {
                 if(BalanceScreenBackend.doesHavaLoan(BalanceScreenBackend.getID(),paymentCombobox.getSelectedItem().toString())){
                     if(BalanceScreenBackend.canPayLoan(BalanceScreenBackend.getID(),paymentCombobox.getSelectedItem().toString(),Float.parseFloat(paymentSpinnner.getValue().toString()))){
                         float debt = BalanceScreenBackend.getUserLoan(BalanceScreenBackend.getID(),paymentCombobox.getSelectedItem().toString().toLowerCase());
-                        JOptionPane.showMessageDialog(null,"Successfully paid your debt of "+debt+" "+paymentCombobox.getSelectedItem().toString().toLowerCase());
+                        JOptionPane.showMessageDialog(null,"Successfully paid "+Float.parseFloat(paymentSpinnner.getValue().toString())+paymentCombobox.getSelectedItem().toString().toLowerCase() +"of your debt of "+debt+" "+paymentCombobox.getSelectedItem().toString().toLowerCase());
                         BalanceScreenBackend.takeLoanorPay(Float.parseFloat(paymentSpinnner.getValue().toString()),BalanceScreenBackend.getID(),paymentCombobox.getSelectedItem().toString(),"payment");
                         BalanceScreenBackend.getUsersDataToScreen(BalanceScreenBackend.getID(),user_lira,user_dollar,user_euro,user_gold);
                     }
